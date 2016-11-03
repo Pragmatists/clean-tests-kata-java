@@ -1,13 +1,12 @@
-package $3_given_when_then;
+package $3_test_structure;
+
+import hero.Hero;
+import org.junit.Test;
 
 import static com.google.common.collect.Lists.newArrayList;
 import static org.assertj.core.api.Assertions.assertThat;
 
-import org.junit.Test;
-
-import hero.Hero;
-
-public class GivenWhenThenTest {
+public class HeroesFightTest {
 
     @Test
     public void testFight1() throws Exception {
