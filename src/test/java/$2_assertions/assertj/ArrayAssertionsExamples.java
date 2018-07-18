@@ -14,7 +14,7 @@ import static org.assertj.core.util.Arrays.array;
 /**
  * Array assertions assertj.
  */
-public class ArrayAssertionsExamples extends AbstractAssertionsExamples {
+public class  ArrayAssertionsExamples extends AbstractAssertionsExamples {
     @Test
     public void rings_are_not_empty() throws Exception {
         Ring[] elvesRings = array(vilya, nenya, narya);
@@ -87,7 +87,7 @@ public class ArrayAssertionsExamples extends AbstractAssertionsExamples {
     @Test
     public void subclasses_assertions_examples() {
         // StringBuilder have same assertions as String
-        String stringBuilder = new String("Frodo");
+        StringBuilder stringBuilder = new StringBuilder("Frodo");
         assertThat(stringBuilder).startsWith("Fro").endsWith("do").hasSize(5);
         assertThat(stringBuilder).contains("rod").doesNotContain("fro");
         assertThat(stringBuilder).containsOnlyOnce("do");

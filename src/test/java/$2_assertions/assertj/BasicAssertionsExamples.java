@@ -4,13 +4,14 @@ package $2_assertions.assertj;
 import fellowshipofthering.Movie;
 import fellowshipofthering.Person;
 import fellowshipofthering.TolkienCharacter;
+import org.assertj.core.api.Assertions;
 import org.junit.Test;
 
 import java.util.Map;
 
+import static $2_assertions.assertj.custom.MyProjectAssertions.assertThat;
 import static com.google.common.collect.Maps.newLinkedHashMap;
 import static fellowshipofthering.Race.HOBBIT;
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.entry;
 
 /**
@@ -40,6 +41,7 @@ public class BasicAssertionsExamples extends AbstractAssertionsExamples {
     public void meaningful_error_with_test_description_example() {
         // but you still can override the error message if you have a better one :
         final String frodon = "Frodob";
+        assertThat(frodo).hasName("Frodo");
         assertThat(frodo.getName()).as("check Frodo's name")
                 .overridingErrorMessage("Hey my name is Frodo not %s", frodon).isEqualTo(frodon);
 
@@ -90,22 +92,22 @@ public class BasicAssertionsExamples extends AbstractAssertionsExamples {
         TolkienCharacter mysteriousHobbit = new TolkienCharacter(null, 33, HOBBIT);
 
         // Frodo is still Frodo ...
-        assertThat(frodo).isEqualToComparingFieldByField(frodo);
+        Assertions.assertThat(frodo).isEqualToComparingFieldByField(frodo);
 
         TolkienCharacter frodoClone = new TolkienCharacter("Frodo", 33, HOBBIT);
 
         // Frodo and his clone are equals by comparing fields
-        assertThat(frodo).isEqualToComparingFieldByField(frodoClone);
+        Assertions.assertThat(frodo).isEqualToComparingFieldByField(frodoClone);
 
         // ------------------------------------------------------------------------------------
         // Lenient equality when ignoring null fields of other object
         // ------------------------------------------------------------------------------------
 
         // Frodo is still Frodo ...
-        assertThat(frodo).isEqualToIgnoringNullFields(frodo);
+        Assertions.assertThat(frodo).isEqualToIgnoringNullFields(frodo);
 
         // Null fields in expected object are ignored, the mysteriousHobbit has null name
-        assertThat(frodo).isEqualToIgnoringNullFields(mysteriousHobbit);
+        Assertions.assertThat(frodo).isEqualToIgnoringNullFields(mysteriousHobbit);
 
 
         // ------------------------------------------------------------------------------------
@@ -113,7 +115,7 @@ public class BasicAssertionsExamples extends AbstractAssertionsExamples {
         // ------------------------------------------------------------------------------------
 
         // Except name and age, frodo and sam both are hobbits, so they are lenient equals ignoring name and age
-        assertThat(frodo).isEqualToIgnoringGivenFields(sam, "name", "age");
+        Assertions.assertThat(frodo).isEqualToIgnoringGivenFields(sam, "name", "age");
 
         // But not when just age is ignored
 
@@ -124,7 +126,7 @@ public class BasicAssertionsExamples extends AbstractAssertionsExamples {
         // ------------------------------------------------------------------------------------
 
         // frodo and sam both are hobbits, so they are lenient equals on race
-        assertThat(frodo).isEqualToComparingOnlyGivenFields(sam, "race");
+        Assertions.assertThat(frodo).isEqualToComparingOnlyGivenFields(sam, "race");
 
         // but not when accepting name and race
         //assertThat(frodo).isEqualToComparingOnlyGivenFields(sam, "name", "race", "age");
