@@ -59,7 +59,7 @@ public class FellowshipOfTheRingTest {
         assertThat(fellows.get(7).getName()).isEqualTo("Boromir");
     }
 
-    // Fest zawiera także asercje specyficzne dla map
+    // assert-j zawiera także asercje specyficzne dla map
     @Test
     public void ring_bearers() {
         Map<Ring, Fellow> ringBearers = createRingBearers();
